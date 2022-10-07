@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import Image from 'next/image'
 
 export default function Document() {
   return (
@@ -14,7 +13,7 @@ export default function Document() {
           <div className="border-t border-slate-900/5">
             <div className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
               <div className="mt-6 flex justify-center space-x-6">
-                <Image className="w-36" src="/logo.svg" alt="logo" />
+                <img className="w-36" src="/logo.svg" alt="logo" />
               </div>
               <p className="mt-5 text-center text-base text-gray-400">
                 &copy; 2022 Digital Houses, Inc. All rights reserved.

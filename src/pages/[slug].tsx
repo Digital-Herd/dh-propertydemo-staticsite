@@ -5,7 +5,6 @@ import { Property } from './api/model';
 import { useState } from 'react'
 import { Disclosure, Tab } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
 
 // We filter out properties sold more than 1 month ago.
 const soldOnGtMonth = 1;
@@ -90,7 +89,7 @@ const Property: NextPage<Props> = ({ property }) => {
                       {({ selected }) => (
                         <>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <Image src={image.thumbnail?.href || ""} alt={image.fileName} className="h-full w-full object-cover object-center" />
+                            <img src={image.thumbnail?.href || ""} alt={image.fileName} className="h-full w-full object-cover object-center" />
                           </span>
                           <span
                             className={classNames(
@@ -108,7 +107,7 @@ const Property: NextPage<Props> = ({ property }) => {
             <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
               {property?.propertyToImages.map((image, i) => (
                 <Tab.Panel key={i}>
-                  <Image
+                  <img
                     src={image.preview?.href || ""}
                     alt={image.fileName}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
@@ -272,7 +271,7 @@ const Property: NextPage<Props> = ({ property }) => {
                               >
                                 <>
                                   <span className="absolute inset-0 overflow-hidden rounded-md">
-                                    <Image src={doc.thumbnail?.href || ""} alt={doc.fileName} className="h-full w-full object-cover object-center" />
+                                    <img src={doc.thumbnail?.href || ""} alt={doc.fileName} className="h-full w-full object-cover object-center" />
                                   </span>
                                   <span
                                     className='ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
