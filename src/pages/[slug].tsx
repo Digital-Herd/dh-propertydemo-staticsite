@@ -272,7 +272,7 @@ const Property: NextPage<Props> = ({ property }) => {
                               >
                                 <>
                                   <span className="absolute inset-0 overflow-hidden rounded-md">
-                                    <img src={doc.thumbnail?.href} alt="" className="h-full w-full object-cover object-center" />
+                                    <Image src={doc.thumbnail?.href || ""} alt={doc.fileName} className="h-full w-full object-cover object-center" />
                                   </span>
                                   <span
                                     className='ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
