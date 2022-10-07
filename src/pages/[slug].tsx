@@ -2,10 +2,10 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 import { getAllProperties, getProperty } from './api/deliveryApi';
 import { Property } from './api/model';
-import { Image } from 'next';
 import { useState } from 'react'
 import { Disclosure, Tab } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 // We filter out properties sold more than 1 month ago.
 const soldOnGtMonth = 1;
@@ -90,7 +90,7 @@ const Property: NextPage<Props> = ({ property }) => {
                       {({ selected }) => (
                         <>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <Image src={image.thumbnail?.href} className="h-full w-full object-cover object-center" />
+                            <Image src={image.thumbnail?.href || ""} alt={image.fileName} className="h-full w-full object-cover object-center" />
                           </span>
                           <span
                             className={classNames(
@@ -109,7 +109,8 @@ const Property: NextPage<Props> = ({ property }) => {
               {property?.propertyToImages.map((image, i) => (
                 <Tab.Panel key={i}>
                   <Image
-                    src={image.preview?.href}
+                    src={image.preview?.href || ""}
+                    alt={image.fileName}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>
@@ -267,6 +268,7 @@ const Property: NextPage<Props> = ({ property }) => {
                                 className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                                 href={doc.downloadOriginal?.href}
                                 target='_blank'
+                                rel="noreferrer"
                               >
                                 <>
                                   <span className="absolute inset-0 overflow-hidden rounded-md">
