@@ -157,8 +157,6 @@ function mapAsset(data?: any): (Asset | null) {
       return { ...p }
   }) || [];
 
-  publicLinks = publicLinks.filter(p => p.status === 'Completed')
-
   publicLinks = publicLinks.map(p => ({
     ...p,
     href: `${process.env.PUBLIC_LINK_URL}${p.relativeUrl}?v=${p.versionHash}`
