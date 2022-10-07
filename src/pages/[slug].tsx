@@ -2,6 +2,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 import { getAllProperties, getProperty } from './api/deliveryApi';
 import { Property } from './api/model';
+import { Image } from 'next';
 import { useState } from 'react'
 import { Disclosure, Tab } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
@@ -89,7 +90,7 @@ const Property: NextPage<Props> = ({ property }) => {
                       {({ selected }) => (
                         <>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <img src={image.thumbnail?.href} alt="" className="h-full w-full object-cover object-center" />
+                            <Image src={image.thumbnail?.href} className="h-full w-full object-cover object-center" />
                           </span>
                           <span
                             className={classNames(
@@ -107,7 +108,7 @@ const Property: NextPage<Props> = ({ property }) => {
             <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
               {property?.propertyToImages.map((image, i) => (
                 <Tab.Panel key={i}>
-                  <img
+                  <Image
                     src={image.preview?.href}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
